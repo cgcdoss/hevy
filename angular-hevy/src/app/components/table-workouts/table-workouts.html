@@ -1,0 +1,33 @@
+<p-table [value]="workouts() || $any([1,2,3,4,5])">
+    <ng-template #header>
+        <tr>
+            <th>Nome</th>
+            <th>Início</th>
+            <th>Fim</th>
+            <th>Volume</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-workout>
+        <tr>
+            @if (isLoading()) {
+            <td>
+                <div class="flex items-center gap-3">
+                    <p-skeleton width="40px" height="40px" borderRadius="6px" />
+                    <div class="flex flex-col gap-1">
+                        <p-skeleton width="8rem" height="0.6rem" borderRadius="4px" />
+                        <p-skeleton width="5rem" height="0.55rem" borderRadius="4px" />
+                    </div>
+                </div>
+            </td>
+            <td><p-skeleton width="5rem" height="1rem" borderRadius="16px" /></td>
+            <td><p-skeleton width="3rem" height="0.6rem" borderRadius="4px" /></td>
+            <td><p-skeleton width="6rem" height="1rem" borderRadius="16px" /></td>
+            } @else if (workouts()) {
+            <td>{{workout.title}}</td>
+            <td>{{workout.start_time}}</td>
+            <td>{{workout.end_time}}</td>
+            <td>{{workout.volume | number:'1.0-2'}}kg</td>
+            }
+        </tr>
+    </ng-template>
+</p-table>

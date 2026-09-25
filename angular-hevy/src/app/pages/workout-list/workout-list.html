@@ -1,0 +1,29 @@
+<main class="container mx-auto my-8">
+    @if ( workouts$ | async; as workouts) {
+    <div class="flex flex-col gap-2">
+        @for (workout of workouts.workouts; track $index) {
+        <p-card [classList]="'cursor-pointer'" [header]="`${workout.title}`"
+            [subheader]="`${workout.start_time | date:'dd/mm/yyyy'}`" (click)="goToDetail(workout.id)">
+            <span class="text-gray-200">{{ workout.description }}</span>
+            <div class="flex gap-2">
+                <p>{{ workout.duration.hours }}h {{ workout.duration.minutes }}min</p>
+                <p>{{ workout.volume | number:'1.0' }}</p>
+            </div>
+
+            @for (exercise of workout.exercises; track $index) {
+            <!-- <h4>{{ exercise.title }}</h4> -->
+            @for (set of exercise.sets; track $index) {
+            <!-- <p>{{ set.reps }} reps x {{ set.weight_kg }} kg</p> -->
+            }
+            }
+        </p-card>
+        }
+    </div>
+    } @else {
+    @for (item of [1, 2, 3, 4, 5, 6, 7]; track $index) {
+    <div class="p-1 rounded-lg bg-surface-50 dark:bg-surface-800/75">
+        <p-skeleton width="100%" height="10rem" />
+    </div>
+    }
+    }
+</main>

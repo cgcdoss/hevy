@@ -1,0 +1,5 @@
+@if (workout$ | async; as workout) {
+<pre>{{ workout | json }}</pre>
+} @else {
+<p>Loading...</p>
+}

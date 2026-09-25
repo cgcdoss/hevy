@@ -1,0 +1,18 @@
+<p-toast />
+
+<router-outlet />
+
+@if (!hasApiKey()) {
+<main class="w-screen h-screen flex flex-col items-center justify-center gap-4">
+    <h1 class="text-2xl font-bold mb-4">Insira sua API Key</h1>
+    <input pInputText type="text" [(ngModel)]="apiKey" placeholder="API Key" />
+    <button pButton (click)="onApiKeyChange()">Salvar</button>
+
+    <section class="mt-4 text-center">
+        <p class="mb-2">Não sabe onde obter sua API Key?</p>
+        <a href="https://hevy.com/settings?developer" target="_blank" class="text-blue-500 hover:underline">
+            Clique aqui
+        </a>
+    </section>
+</main>
+}
