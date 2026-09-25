@@ -1,4 +1,4 @@
-<main class="container mx-auto my-8">
+<main class="container mx-auto my-8 px-2">
     @if ( workouts$ | async; as workouts) {
     <div class="flex flex-col gap-2">
         @for (workout of workouts.workouts; track $index) {
