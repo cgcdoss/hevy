@@ -1,0 +1,64 @@
+<p-stepper [value]="1" class="min-w-75 lg:w-[50vw]">
+    <p-step-item [value]="1">
+        <p-step>Faça login no Hevy</p-step>
+        <p-step-panel>
+            <ng-template #content let-activateCallback="activateCallback">
+                <div class="flex flex-col">
+                    <div
+                        class="p-8 border-2 border-dashed border-surface-200 dark:border-surface-700 rounded-sm bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium text-sm">
+                        <a href="https://hevy.com/login" target="_blank" class="text-blue-500 hover:underline">
+                            Clique aqui para fazer login
+                        </a>
+                    </div>
+                </div>
+                <div class="py-5">
+                    <button type="button" pButton (click)="activateCallback(2)">Próximo</button>
+                </div>
+            </ng-template>
+        </p-step-panel>
+    </p-step-item>
+    <p-step-item [value]="2">
+        <p-step>Gere sua API Key</p-step>
+        <p-step-panel>
+            <ng-template #content let-activateCallback="activateCallback">
+                <div class="flex flex-col">
+                    <div
+                        class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded-sm bg-surface-50 dark:bg-surface-950 flex-auto flex flex-col gap-2 justify-center items-center font-medium text-sm">
+                        <img src="gerar_apikey.png" alt="API Key Tutorial" class="max-h-full max-w-full" />
+
+                        <a href="https://hevy.com/settings?developer" target="_blank"
+                            class="text-blue-500 hover:underline">
+                            Clique aqui para gerar sua API Key
+                        </a>
+                    </div>
+                </div>
+                <div class="flex py-5 gap-2">
+                    <button type="button" pButton severity="secondary" (click)="activateCallback(1)">Voltar</button>
+                    <button type="button" pButton (click)="activateCallback(3)">Próximo</button>
+                </div>
+            </ng-template>
+        </p-step-panel>
+    </p-step-item>
+    <p-step-item [value]="3">
+        <p-step>Copie e cole a sua API Key no campo acima</p-step>
+        <p-step-panel>
+            <ng-template #content let-activateCallback="activateCallback">
+                <div class="flex flex-col">
+                    <div
+                        class="p-8 border-2 border-dashed border-surface-200 dark:border-surface-700 rounded-sm bg-surface-50 dark:bg-surface-950 flex-auto flex flex-col gap-2 justify-center items-center font-medium text-sm">
+                        <button type="button" pButton (click)="onApiKeyPaste()">
+                            Clique aqui para colar a API Key
+                        </button>
+
+                        <p>
+                            Depois de colada, basta clicar em Salvar para continuar usando o aplicativo.
+                        </p>
+                    </div>
+                </div>
+                <div class="py-5">
+                    <button type="button" pButton severity="secondary" (click)="activateCallback(2)">Voltar</button>
+                </div>
+            </ng-template>
+        </p-step-panel>
+    </p-step-item>
+</p-stepper>

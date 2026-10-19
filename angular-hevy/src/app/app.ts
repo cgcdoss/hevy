@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { routes } from './app.routes';
 import { Http } from './core/services/http';
+import { ApiKeyTutorial } from './pages/api-key-tutorial/api-key-tutorial';
 
 @Component({
   imports: [
@@ -15,8 +16,8 @@ import { Http } from './core/services/http';
     FormsModule,
     InputTextModule,
     ButtonModule,
+    ApiKeyTutorial,
   ],
-  providers: [MessageService],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
@@ -29,6 +30,7 @@ export class App {
 
   public apiKey?: string;
   public hasApiKey = computed(() => !!this._httpService.apiKey());
+  public showApiKeyTutorial = false;
 
   public onApiKeyChange(): void {
     if (!this.apiKey) {
@@ -42,6 +44,11 @@ export class App {
 
     this._httpService.apiKey.set(this.apiKey || '');
     this._router.navigateByUrl(routes[0].path!);
+  }
+
+  public clearApiKey(): void {
+    this._httpService.clearApiKey();
+    location.reload();
   }
 
 }
